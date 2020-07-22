@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  php:
+    # build: .
+    image: php
+    ports:
+      - "8080:80"
+    expose:
+      - 80
+    container_name: meusite_php
+    volumes:
+      - .:/usr/share/nginx/html
