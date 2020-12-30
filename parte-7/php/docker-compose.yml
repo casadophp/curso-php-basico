@@ -4,12 +4,17 @@ services:
     # build: .
     image: php_php
     ports:
-      - "8080:80"
+      - "80:80"
+      - 443:443
     expose:
       - 80
+      - 443
     container_name: meusite_php
+    restart: always
     volumes:
       - .:/usr/share/nginx/html
+      - ./conf.d:/etc/nginx/conf.d
+      - ./certbot:/etc/nginx/ssl
   php-mysql:
     image: ${MYSQL_IMAGE}
     ports:
