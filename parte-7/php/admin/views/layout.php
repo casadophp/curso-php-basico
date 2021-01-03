@@ -4,17 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADMIN</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <title>Área administrativa</title>
+  <link rel="stylesheet" href="<?php echo css('bootstrap.min'); ?>">
+  <link rel="stylesheet" href="<?php echo css('dashboard'); ?>">
 </head>
 
 <body>
-  ADMIN
+  <?php pagina('header'); ?>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-  </script>
+  <div class="container-fluid">
+    <div class="row">
+      <?php pagina('menu'); ?>
+      <?php pagina('corpo') ?>
+    </div>
+  </div>
+
+  <script src="<?php echo js('bootstrap.bundle.min'); ?>"></script>
+  <script src="<?php echo js('feather.min'); ?>"></script>
+  <script src="<?php echo js('Chart.min'); ?>"></script>
+  <script src="<?php echo js('dashboard'); ?>"></script>
 </body>
 
 </html>

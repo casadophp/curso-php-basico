@@ -3,12 +3,6 @@
 function app(){
   if(verificarLogado() == false) {
     redirecionarLogin("/admin/login");
-  } else {
-    // redirecionarLogin("/admin/home");
-    
-    echo 'Admin';
-    echo "<br />";
-    echo "<br />";
   }
 }
 
@@ -29,9 +23,41 @@ function layout()
   $verificarUrl = verificaURL($_GET);
   $pagina = obterParametros($verificarUrl, $_GET)[1];
 
-  echo $pagina;
+  if($pagina == 'login') {
+    require_once "./views/layout_login.php";
+  } else if($pagina == 'sair') {
+    session_destroy();
+    redirecionar('/admin/login');
+  } else {
+    require_once "./views/layout.php";
+  }
+}
 
-  // require_once "./paginas/{$pagina}.php";
+function pagina($arquivo){
+  if($arquivo) {
+    $arquivoDiretorio = __DIR__ . '/../admin/views/includes/' . $arquivo. '.php';
+    if(file_exists($arquivoDiretorio)) {
+      include_once $arquivoDiretorio;
+    }
+  }
+}
 
-  require_once "./views/layout_login.php";
+function css($arquivo) {
+  if($arquivo) {
+    $arquivoPadrao = 'admin/assets/css/' . $arquivo. '.css';
+    $arquivoDiretorio = __DIR__ . '/../' . $arquivoPadrao;
+    if(file_exists($arquivoDiretorio)) {
+      return '/'.$arquivoPadrao;
+    }
+  }
+}
+
+function js($arquivo) {
+  if($arquivo) {
+    $arquivoPadrao = 'admin/assets/js/' . $arquivo. '.js';
+    $arquivoDiretorio = __DIR__ . '/../' . $arquivoPadrao;
+    if(file_exists($arquivoDiretorio)) {
+      return '/'.$arquivoPadrao;
+    }
+  }
 }
