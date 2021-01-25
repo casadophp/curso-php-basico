@@ -10,12 +10,14 @@
 </head>
 
 <body>
-  <?php pagina('header'); ?>
+  <?php view('header'); ?>
 
   <div class="container-fluid">
     <div class="row">
-      <?php pagina('menu'); ?>
-      <?php pagina('corpo') ?>
+      <?php view('menu'); ?>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <?php pagina(); ?>
+      </main>
     </div>
   </div>
 

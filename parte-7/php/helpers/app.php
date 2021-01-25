@@ -33,7 +33,21 @@ function layout()
   }
 }
 
-function pagina($arquivo){
+function pagina() {
+  $verificarUrl = verificaURL($_GET);
+  $pagina = obterParametros($verificarUrl, $_GET)[1];
+
+  if($pagina) {
+    $arquivoDiretorio = __DIR__. '/../admin/paginas/' . $pagina . '.php';
+    if(file_exists($arquivoDiretorio)) {
+      include_once $arquivoDiretorio;
+    } else {
+      include_once __DIR__. '/../admin/paginas/404.php'; 
+    }
+  }
+}
+
+function view($arquivo){
   if($arquivo) {
     $arquivoDiretorio = __DIR__ . '/../admin/views/includes/' . $arquivo. '.php';
     if(file_exists($arquivoDiretorio)) {
